@@ -2,12 +2,13 @@
 import pandas as pd
 import numpy as numpy
 from datetime import date
+import datetime
 import os
 
 class box:
-	def __init__():
+	def __init__(self):
 		self.task_done = ""
-		self.no_of_day = (datetime.date.today() - date(1997, 8, 21)).days()
+		self.no_of_day = (datetime.date.today() - date(1997, 8, 21)).days
 		self.dest = ""
 		self.wake_up = "" #should change in future
 		self.sleep = ""
@@ -29,7 +30,7 @@ class box:
 		self.got_love = False
 		self.pain = False
 
-	def log():
+	def log(self):
 		print("Enter your daily achievement: ")
 		self.task_done = str(input())
 		print("Did you go anywhere? (Leave blank if nowhere) :")
@@ -45,21 +46,21 @@ class box:
 		
 		#Health
 		print("Did you have breakfast? :")
-		self.breakfast = _conv_bool(input())
+		self.breakfast = self._conv_bool(input())
 		print("Did I eat sufficiently? :")
-		self.food_type = _conv_bool(input())
+		self.food_type = self._conv_bool(input())
 
 		#Studies
 		print("Did you study Machine Learning? :")
-		self.ML = _conv_bool(input())
+		self.ML = self._conv_bool(input())
 
 		#GREStudies
 		print("Did you study GRE_quant today? :")
-		self.GRE_quant = _conv_bool(input())
-		self.GRE_quant_count = _get_GRE(GRE_quant)
+		self.GRE_quant = self._conv_bool(input())
+		self.GRE_quant_count = self._get_GRE(self.GRE_quant)
 		print("Did you study GRE verbal today? :")
-		self.GRE_verbal = _conv_bool(input())
-		self.GRE_verbal_count = _get_GRE(GRE_verbal)
+		self.GRE_verbal = self._conv_bool(input())
+		self.GRE_verbal_count = self._get_GRE(self.GRE_verbal)
 
 		print("How many articles did you read today? :")
 		self.articles_read = int(input())
@@ -68,17 +69,17 @@ class box:
 
 		#Day Review
 		print("Did you feel anger today? :")
-		self.anger = _conv_bool(input())
+		self.anger = self._conv_bool(input())
 		print("Did you feel sad today? :")
-		self.sad_day = _conv_bool(input())
+		self.sad_day = self._conv_bool(input())
 		print("Were you happy today? :")
-		self.happy_day = _conv_bool(input())
+		self.happy_day = self._conv_bool(input())
 		print("Did someone love you today? :")
-		self.got_love = _conv_bool(input())
+		self.got_love = self._conv_bool(input())
 		print("Did you exercise today? :")
-		self.exercise = _conv_bool(input())
+		self.exercise = self._conv_bool(input())
 		print("Was your body in pain? :")
-		self.pain = _conv_bool(input())
+		self.pain = self._conv_bool(input())
 
 	def _get_GRE(self, ip):
 		if self._conv_bool(ip):
@@ -88,7 +89,7 @@ class box:
 			return 0
 
 	def _conv_bool(self, x):
-		if ('Y' or 'y' or True):
+		if ('Y' or 'y'):
 			return True
 		else : 
 			return False
@@ -96,4 +97,42 @@ class box:
 
 if __name__ == '__main__':
 	import os
+	if not os.path.exists('./logs.csv'):
+		df = pd.DataFrame(data = None, columns = 
+					['no_of_day', 'task_done', 'destination',
+					 'wake_up_time', 'sleep_time', 'social_media_time',
+					 'self_time', 'breakfast', 'food_type',
+					 'GRE_quant', 'GRE_quant_count',
+					 'GRE_verbal', 'GRE_verbal_count',
+					 'Machine_Learning', 'articles_read', 'words_learned',
+					 'anger', 'exercise', 'sad_day',
+					 'happy_day', 'got_love', 'pain'])
+		print('File doesnt exist')
+		print(df.head())
+	else:
+		df = pd.read_csv('./logs.csv')
+		print('File exists')
+		print(df.head)
+	b = box()
+	b.log()
+	df_2 = pd.DataFrame(data = [[b.no_of_day, b.task_done, b.dest,
+								b.wake_up, b.sleep, b.social_media_time, 
+								b.self_time, b.breakfast, b.food_type, 
+								b.GRE_quant , b.GRE_quant_count, 
+								b.GRE_verbal, b.GRE_verbal_count, 
+								b.ML, b.articles_read, b.words_learned, 
+								b.anger, b.exercise, b.sad_day, 
+								b.happy_day, b.got_love, b.pain]], 
+					 columns = [
+					 'no_of_day', 'task_done', 'destination',
+					 'wake_up_time', 'sleep_time', 'social_media_time',
+					 'self_time', 'breakfast', 'food_type',
+					 'GRE_quant', 'GRE_quant_count',
+					 'GRE_verbal', 'GRE_verbal_count',
+					 'Machine_Learning', 'articles_read', 'words_learned',
+					 'anger', 'exercise', 'sad_day', 'happy_day',
+					 'got_love', 'pain'])
+	result = df.append(df_2)
+	result.to_csv('./logs.csv')
+	result.head()
 	print(os.getcwd())
