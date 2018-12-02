@@ -89,7 +89,7 @@ class box:
 			return 0
 
 	def _conv_bool(self, x):
-		if ('Y' or 'y'):
+		if x == 'Y' or x == 'y':
 			return True
 		else : 
 			return False
@@ -133,6 +133,6 @@ if __name__ == '__main__':
 					 'anger', 'exercise', 'sad_day', 'happy_day',
 					 'got_love', 'pain'])
 	result = df.append(df_2)
-	result.to_csv('./logs.csv')
+	result.to_csv('./logs.csv', index = False)
 	result.head()
 	print(os.getcwd())
