@@ -1,2 +1,3 @@
 no_of_day,task_done,destination,wake_up_time,sleep_time,social_media_time,self_time,breakfast,food_type,GRE_quant,GRE_quant_count,GRE_verbal,GRE_verbal_count,Machine_Learning,articles_read,words_learned,anger,exercise,sad_day,happy_day,got_love,pain
-7773,Completed Learning Git,no,1030,0300,4.0,3.0,False,False,False,0,False,0,False,0,0,True,False,True,True,True,True
+7773,Completed Learning Git,no,1030,300,4.0,3.0,False,False,False,0,False,0,False,0,0,True,False,True,True,True,True
+7774,Completed with Move 37 week 1,no,0715,0200,4.0,2.0,True,False,False,0,False,0,True,0,0,False,True,False,True,True,True
